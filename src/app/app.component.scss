@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column-reverse;
     background: #fff;
-    height: 32rem;
+    height: 35rem;
 }
 .header-text {
     margin-left: 5%;
@@ -42,13 +42,13 @@ figure {
     // height: 10rem;
 }
 .shortLink-wrapper {
-    height: 4rem;
+    height: 7rem;
     width: 70%;
     background: rgb(15, 107, 107);
     position: relative;
     display: grid;
     place-content: center;
-    top: -3rem;
+    top: -1rem;
     margin: 0px 15%;
     border-radius: .5rem;
 }
@@ -107,21 +107,72 @@ figure {
         h2 {
             font-weight: 600;
         }
+        p {
+            color: gr;
+        }
     }
     &__content {
-        // background: hsl(0, 0%, 75%);
-        height: 20rem;
+        background: hsl(0, 0%, 75%);
+        position: relative;
         width: 70%;
         margin: 0 15%;
-        margin-top: 2rem;
+        margin-top: 4rem;
         display: flex;
+        flex-direction: column;
         gap: 3rem;
+    }
+    &__content:before {
+        content: "";
+        position: absolute;
+        background: rgb(15, 107, 107);;
+        width: .7rem;
+        bottom: 1rem;
+        top: 0;
+        left: 6.7rem;
     }
 }
 .box {
     height: 15rem;
-    width: 30%;
     background: #fff;
+    position: relative;
+    padding: 0px 1rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    figure {
+        position: absolute;
+        left: 4rem;
+        top: -2rem;
+        background: hsl(257, 27%, 26%);
+        width: 4.2rem;
+        height: 4.2rem;
+        display: grid;
+        place-content: center;
+        border-radius: 50%;
+    }
+    h4{
+        margin-top: 3rem;
+        font-weight: 600;
+    }
+    p {
+        color: hsl(0, 0%, 75%);
+        font-weight: 500;
+    }
+}
+// getstarted section
+.getStarted-section{
+    height: 10rem;
+    width: 100%;
+    display: grid;
+    place-content: center;
+    padding: 5% 15%;
+    background: rgb(15, 107, 107);
+    h1 {
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+    button {
+        margin: auto;
+    }    
 }
 
 
@@ -144,12 +195,31 @@ figure {
     }
     .shortLink-wrapper {
         height: 7rem;
+        top: -3rem;
     }
     .shortLink {
         grid-template-columns: 1fr max-content;
     }
     .input {
         width: 30rem;
+    }
+    .statDiv__content {
+        flex-direction: row;
+        height: 22rem;
+    }
+    .statDiv__content:before {
+        width: 100%;
+        height: .75rem;
+        top: 12rem;
+        left: 0;
+        right: 0;
+    }
+    .box{
+        width: 40%;
+        figure {
+            top: -2rem;
+            left: 0rem;
+        }
     }
     .mt1 {
         margin-top: 1rem;
