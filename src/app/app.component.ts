@@ -1,7 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ApiService } from './api.service';
+import { ApiService } from './service/api.service';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ClipboardService } from 'ngx-clipboard';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +12,43 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class AppComponent {
   title = 'urlShort';
-  showEl = false;
+  showEl = false;  
   
-  constructor(private api:ApiService, private http: HttpClient) {}
+  constructor(private api:ApiService,
+              private http: HttpClient,
+              private _clipboardService: ClipboardService
+              ) {
+                this._clipboardService.copyResponse$.subscribe(re => {
+                  if (re.isSuccess) {
+                      alertify.success('copy success!');
+                  }
+              });
+              }
+
   // input form control
   linkInput = new FormControl('', {validators:Validators.required});
+  linkData:any  //bind data from api
 
-  linkData:any
+  //get the shortend link from the api
   shortenLink() {
     this.api.createLink(this.linkInput.value).subscribe(
       (res) => {
         this.linkData = res
-        this.showEl = true;
       }
     )
+    if (this.linkInput.value == "") {
+      this.showEl
+    } else {
+      this.showEl = !this.showEl;
+    }
   }
-  ngOnInit() {
 
+  ngOnInit() {
+    this._clipboardService.copyResponse$.subscribe(re => {
+      if (re.isSuccess) {
+          alertify.success('copy success!');
+      }
+  });
   }
 
 }

@@ -23,13 +23,7 @@ export class ApiService {
       }
     ))
   }
-  
-  // const baseUrl = 'https://api.shrtco.de/v2/shorten'
 
-  // let queryParams = new HttpParams();
-  // queryParams = queryParams.append('url',  this.linkInput.value);
-  // return this.http.get<string>(baseUrl, {
-  //   params:queryParams
-  // })
+  
 
 }

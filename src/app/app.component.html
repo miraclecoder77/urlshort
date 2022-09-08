@@ -38,7 +38,7 @@
       <div class="shortLink-wrapper">
           <div class=" shortLink">
               <div class="input" >
-                <input [formControl]="linkInput" type="text" style="width: 100%; height:100%;">
+                <input [formControl]="linkInput" #inputTarget type="text" style="width: 100%; height:100%;">
               </div> 
               <button class="button" (click)="shortenLink()" >Shorten It</button>
           </div>
@@ -47,15 +47,20 @@
             <div class="container">
               <div class="display-panel">
                 <div class="link-panel">
-                  https://betballers.com/23/?support 
+                  {{linkInput.value}}
                 </div>
                 <div class="apiLink-panel">
                   <div id="apiLink" class="apiLink">
                     {{linkData?.result.short_link}}
                   </div>
-                  <button class="button">
-                    Copy
-                  </button>
+                  <div #container>
+                    <button 
+                    class="button" 
+                    [ngxClipboard]="inputTarget" 
+                    [container]="container">
+                      Copy
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,5 +105,15 @@
       <h1>Boost your links today</h1>
       <button class="button"> Get started</button>
   </section>
-  <footer></footer>
+  <footer class="footer">
+        <div>
+          <img src="../assets/logo.svg" alt="">
+          <span>
+            <img src="../assets/icon-instagram.svg" alt="">
+            <img src="../assets/icon-twitter.svg" alt="">
+            <img src="../assets/icon-facebook.svg" alt="">
+          </span>
+        </div>
+        <p>urlShort &copy; 2022</p>
+  </footer>
 </main>
